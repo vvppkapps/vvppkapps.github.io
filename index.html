@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<style id="webmakerstyle">
+body {
+  
+  max-width:600px;
+  background: #111;
+  color: #fff;
+  margin: auto;
+}
+h1 {
+  color: #777;
+  padding: 0 0 0 5%;
+}
+input {
+  width: 90%;
+  margin: auto;
+  display: block;
+  padding: 5px;
+  border-radius: 6px;
+  font-size: 18px;
+  
+}
+ul {
+    list-style-type: none;
+}
+li {
+    width: 90%;
+  margin: auto;
+  display: block;
+  background: #222;
+  margin: 3px;
+  padding: 5px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+  <!--Playing around with Vue.js and is still draft!-->
+
+<div id="directory">
+  <h1>список станций</h1>
+  <div id="my_view">
+    <div id="searchBar">
+      <input v-model="search" type="text" placeholder="введи название станции" />
+      <ul>
+        <li v-for="station in stations | filterBy search in 'name'"> {{ station.name }} <b>{{ station.code }}</b> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js'></script>
+
+  
+
+
+
+
+
+
+<script>
+var myModel = {
+  name: "Нижний Новгород <b>1101</b>",
+  stations: [
+    { name: "Толоконцево", code: "3215" },
+    { name: "Рекшино", code: "3214" },
+    { name: "Киселиха", code: "3213" },
+    { name: "Шпалозавод", code: "3212" },
+    { name: "Каликино", code: "3211" },
+    { name: "Линда", code: "3210" },
+    { name: "Кеза", code: "3209" },
+    { name: "Тарасиха", code: "3208" },
+    { name: "Осинки", code: "3207" },
+    { name: "Семёнов", code: "3205" },
+    { name: "Керженец", code: "3203" },
+    { name: "Озеро", code: "3202" },
+    { name: "Каменный Овраг", code: "3201" },
+    { name: "Сухобезводное", code: "101" },
+    { name: "Перехватка", code: "102" },
+    { name: "Ветлужская", code: "103" },
+    { name: "Быструха", code: "106" },
+    { name: "Шеманиха", code: "107" },
+    { name: "Минеевка", code: "108" },
+    { name: "Уста", code: "109" },
+    { name: "Урень", code: "110" },
+    { name: "Арья", code: "111" },
+    { name: "Шалега", code: "112" },
+    { name: "Обход", code: "113" },
+    { name: "Буренино", code: "114" },
+    { name: "Зубанья", code: "115" },
+    { name: "Шахунья", code: "116" },
+    { name: "Шестериково", code: "118" },
+    { name: "Тоншаево", code: "119" },
+    { name: "Янгарка", code: "120" },
+    { name: "Пижма", code: "122" },
+    { name: "Одошнур", code: "123" },
+    { name: "Буреполом", code: "125" },
+    { name: "Шерстки", code: "126" },
+    { name: "Ежиха", code: "129" },
+    { name: "Ежуры", code: "131" },
+    { name: "Иготино", code: "134" },
+    { name: "Шикали", code: "137" },
+    { name: "Котельнич", code: "2", code: "138" },
+    { name: "Котельнич", code: "1", code: "224" },
+    { name: "Белая", code: "223" },
+    { name: "Мокрицы", code: "222" },
+    { name: "Васевка", code: "221" },
+    { name: "Марадыковский", code: "220" },
+    { name: "Быстряги", code: "218" },
+    { name: "Шалегово", code: "216" },
+    { name: "Оричи", code: "214" },
+    { name: "Социалистический", code: "213" },
+    { name: "Стрижи", code: "212" },
+    { name: "Цапели", code: "209" },
+    { name: "Лянгасово Б.", code: "208" },
+    { name: "Лянгасово Депо", code: "207" },
+    { name: "Лянгасово Сорт.", code: "206" },
+    { name: "Дачная", code: "204" },
+    { name: "Чухломинский", code: "203" },
+    { name: "Ломовская", code: "202" },
+    { name: "Киров Пасс.", code: "220" },
+    { name: "Арзамас 1", code: "1501" },
+    { name: "Пешелань", code: "1502" },
+    { name: "Шатки", code: "1503" },
+    { name: "Поя", code: "1504" },
+    { name: "Лукоянов", code: "1505" },
+    { name: "Веселей", code: "1506" },
+    { name: "Николай Дар", code: "1507" },
+    { name: "Арзинка", code: "1508" },
+    { name: "Ужовка", code: "1509" },
+    { name: "Металлист", code: "2612" },
+    { name: "Северный", code: "2611" },
+    { name: "Абабково", code: "2610" },
+    { name: "Ворсма", code: "2609" },
+    { name: "Убежицы", code: "2607" },
+    { name: "Выблово", code: "2606" },
+    { name: "Кожевенное", code: "2605" },
+    { name: "Стрелково", code: "2604" },
+    { name: "Ефимьево", code: "2603" },
+    { name: "Копнино", code: "2602" },
+    { name: "Буревестник", code: "2601" },
+    { name: "Лапшанга", code: "3109" },
+    { name: "Кайск", code: "3105" },
+    { name: "Постой", code: "3104" },
+    { name: "Пруды", code: "3102" },
+    { name: "Сормово", code: "3301" },
+    { name: "Варя", code: "3302" },
+  ],
+  search: ""
+};
+
+var myViewModel = new Vue({
+  el: '#my_view',
+  data: myModel
+});
+//# sourceURL=userscript.js
+</script>
+</body>
+</html>
